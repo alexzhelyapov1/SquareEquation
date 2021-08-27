@@ -4,18 +4,19 @@
 #include <stdlib.h>
 
 
-const int INFINITY_ROOTS = -1;
-const int NO_ROOTS = 0;
-const int ONE_ROOT = 1;
-const int TWO_ROOTS = 2;
+
+const int INFINITY_ROOTS = -1;        //!< Const in case of Infinity number of roots
+const int NO_ROOTS = 0;               //!< Const in case of No roots
+const int ONE_ROOT = 1;               //!< Const in case of Single root
+const int TWO_ROOTS = 2;              //!< Const in case of two roots
 const int NO = 0;
 const int YES = 1;
-const double NEAR_ZERO = 1e-100; //точность вычислений из матанализа
+const double NEAR_ZERO = 1e-100;      //!< Accuracy of our calculations (gets by MathAnalysis)
 
 
-int SolveSquare (double a, double b, double c, double* root1, double* root2);     // Equation a*x^2 + b*x + c = 0
+int SolveSquare (double a, double b, double c, double* root1, double* root2);
 bool IsEqual (double value, double compareValue);
-double SolveLinear (double coefficientAtX, double freeMember);  //Решение линейного уравнения вида coefficientAtX * x + freeMember = 0 (оно гарантировано существует)
+double SolveLinear (double coefficientAtX, double freeMember);
 void OutputAnswer (int nRoots, double root1, double root2);
 void InputCoefficient (double* a, double* b, double* c);
 void TestSolveSquare ();
@@ -37,7 +38,7 @@ int main () {
     InputCoefficient (&a, &b, &c);
 
     double root1 = NAN, root2 = NAN;
-    int nRoots = SolveSquare (a, b, c, &root1, &root2);      // Указатель!
+    int nRoots = SolveSquare (a, b, c, &root1, &root2);
     OutputAnswer (nRoots, root1, root2);
     //TestSolveSquare ();
 
@@ -45,6 +46,17 @@ int main () {
 }
 
 
+
+//----------------------------------------------------------------
+//!   Program solve square equation a*x^2 + b*x + c = 0
+//! @param  [in]   a - coefficient
+//! @param  [in]   b - coefficient
+//! @param  [in]   c - coefficient
+//! @param  [out]   root1 - pointer to the 1st root
+//! @param  [out]   root2 - pointer to the 2nd root
+//! @return Number of roots
+//! @note In case of infinity number of roots program return INFINITY_ROOTS
+//----------------------------------------------------------------
 
 int SolveSquare (double a, double b, double c, double* root1, double* root2) {
 
@@ -87,6 +99,12 @@ int SolveSquare (double a, double b, double c, double* root1, double* root2) {
     }
 }
 
+//----------------------------------------------------------------
+//! Compare two double numbers
+//! @param [in] value - first number
+//! @param [in] compareValue - second number
+//! @return Is this two numbers equal?
+//----------------------------------------------------------------
 
 bool IsEqual (double value, double compareValue) {
 
@@ -97,6 +115,14 @@ bool IsEqual (double value, double compareValue) {
 }
 
 
+
+//----------------------------------------------------------------
+//! Program solve linear equation coefficientAtX * x + freeMember = 0 (Decision must exist)
+//! Program solve square equation a*x^2 + b*x + c = 0
+//! @param  [in]   coefficientAtX - coefficient
+//! @return Decision of equation
+//----------------------------------------------------------------
+
 double SolveLinear (double coefficientAtX, double freeMember){
 
     assert (coefficientAtX != 0);
@@ -106,6 +132,13 @@ double SolveLinear (double coefficientAtX, double freeMember){
     return -freeMember/coefficientAtX;
 }
 
+
+//----------------------------------------------------------------
+//!   Program printing answer of equation
+//!   @param  [in]   nRoots - number of roots
+//!   @param  [in]   root1 - first root of equation
+//!   @param  [in]   root2 - second root of equation
+//----------------------------------------------------------------
 
 void OutputAnswer (int nRoots, double root1, double root2) {
 
@@ -130,6 +163,13 @@ void OutputAnswer (int nRoots, double root1, double root2) {
     }
 }
 
+
+//----------------------------------------------------------------
+//!   Program gets values of variables
+//!   @param  [out]   a - pointer to the "a" coefficient
+//!   @param  [out]   b - pointer to the "b" coefficient
+//!   @param  [out]   c - pointer to the "c" coefficient
+//----------------------------------------------------------------
 
 void InputCoefficient (double* a, double* b, double* c) {
 
@@ -157,6 +197,8 @@ void InputCoefficient (double* a, double* b, double* c) {
     }
 }
 
+
+//! Testing program of the function "SolveSquare()"
 
 void TestSolveSquare () {
     double a = NAN, b = NAN, c = NAN;
@@ -196,6 +238,9 @@ void TestSolveSquare () {
     printf ("End of Tests!");
 }
 
+
+//! Print "Error!" and number of test in case of failed
+//! @param [in] numberOfTest - coefficient
 
 void PrintErrOfTest (int numberOfTest) {
     printf ("Error Test %d!\n", numberOfTest + 1);
