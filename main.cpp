@@ -48,14 +48,15 @@ int main () {
 
 
 //----------------------------------------------------------------
-//!   Program solve square equation a*x^2 + b*x + c = 0
-//! @param  [in]   a - coefficient
-//! @param  [in]   b - coefficient
-//! @param  [in]   c - coefficient
-//! @param  [out]   root1 - pointer to the 1st root
-//! @param  [out]   root2 - pointer to the 2nd root
-//! @return Number of roots
-//! @note In case of infinity number of roots program return INFINITY_ROOTS
+//!  Program solve square equation a*x^2 + b*x + c = 0
+//!  @param  [in]   a - coefficient
+//!  @param  [in]   b - coefficient
+//!  @param  [in]   c - coefficient
+//!  @param  [out]   root1 - pointer to the 1st root
+//!  @param  [out]   root2 - pointer to the 2nd root
+//!  @return Number of roots
+//!  @note In case of infinity number of roots program return INFINITY_ROOTS
+//!  @copyright AlexZ (Idea of Ded;))
 //----------------------------------------------------------------
 
 int SolveSquare (double a, double b, double c, double* root1, double* root2) {
@@ -67,9 +68,9 @@ int SolveSquare (double a, double b, double c, double* root1, double* root2) {
     assert (root2 != NULL);
 
 
-    if (IsEqual(a, 0)) {
-        if (IsEqual(b, 0)) {
-            if (IsEqual(c, 0)) {
+    if (IsEqual(a, 0.0)) {
+        if (IsEqual(b, 0.0)) {
+            if (IsEqual(c, 0.0)) {
                 return INFINITY_ROOTS;
             }
             else {
@@ -82,12 +83,12 @@ int SolveSquare (double a, double b, double c, double* root1, double* root2) {
         }
     }
     else {
-        double discriminant = pow (b, 2) - 4*a*c;
+        double discriminant = pow (b, 2.0) - 4*a*c;
 
         if (discriminant < 0) {
             return NO_ROOTS;
         }
-        else if (IsEqual(discriminant, 0)) {
+        else if (IsEqual(discriminant, 0.0)) {
             *root1 = SolveLinear(2*a, b);
             return ONE_ROOT;
         }
@@ -100,10 +101,10 @@ int SolveSquare (double a, double b, double c, double* root1, double* root2) {
 }
 
 //----------------------------------------------------------------
-//! Compare two double numbers
-//! @param [in] value - first number
-//! @param [in] compareValue - second number
-//! @return Is this two numbers equal?
+//!  Compare two double numbers
+//!  @param [in] value - first number
+//!  @param [in] compareValue - second number
+//!  @return Is this two numbers equal?
 //----------------------------------------------------------------
 
 bool IsEqual (double value, double compareValue) {
@@ -117,10 +118,11 @@ bool IsEqual (double value, double compareValue) {
 
 
 //----------------------------------------------------------------
-//! Program solve linear equation coefficientAtX * x + freeMember = 0 (Decision must exist)
-//! Program solve square equation a*x^2 + b*x + c = 0
-//! @param  [in]   coefficientAtX - coefficient
-//! @return Decision of equation
+//!  Program solve linear equation coefficientAtX * x + freeMember = 0
+//!  Program solve square equation a*x^2 + b*x + c = 0
+//!  @param  [in]   coefficientAtX - coefficient
+//!  @return Decision of equation
+//!  @note Decision must exist!
 //----------------------------------------------------------------
 
 double SolveLinear (double coefficientAtX, double freeMember){
@@ -134,15 +136,13 @@ double SolveLinear (double coefficientAtX, double freeMember){
 
 
 //----------------------------------------------------------------
-//!   Program printing answer of equation
-//!   @param  [in]   nRoots - number of roots
-//!   @param  [in]   root1 - first root of equation
-//!   @param  [in]   root2 - second root of equation
+//!  Program printing answer of equation
+//!  @param  [in]   nRoots - number of roots
+//!  @param  [in]   root1 - first root of equation
+//!  @param  [in]   root2 - second root of equation
 //----------------------------------------------------------------
 
 void OutputAnswer (int nRoots, double root1, double root2) {
-
-    assert (!isnan (root1));
 
     switch (nRoots){
         case NO_ROOTS:
@@ -165,10 +165,11 @@ void OutputAnswer (int nRoots, double root1, double root2) {
 
 
 //----------------------------------------------------------------
-//!   Program gets values of variables
-//!   @param  [out]   a - pointer to the "a" coefficient
-//!   @param  [out]   b - pointer to the "b" coefficient
-//!   @param  [out]   c - pointer to the "c" coefficient
+//!  Program gets values of variables
+//!  @param  [out]   a - pointer to the "a" coefficient
+//!  @param  [out]   b - pointer to the "b" coefficient
+//!  @param  [out]   c - pointer to the "c" coefficient
+//!  @note You have only 5 attempts to enter coefficients! \n Or you will go to sleep (maybe this isn't a threat:))
 //----------------------------------------------------------------
 
 void InputCoefficient (double* a, double* b, double* c) {
@@ -192,13 +193,17 @@ void InputCoefficient (double* a, double* b, double* c) {
                 cntOfTry++;
         }
 
-        printf ("You're tired, go sleep!!!");
+        printf ("You're tired, go to sleep!!!");
         exit(0);
     }
 }
 
 
-//! Testing program of the function "SolveSquare()"
+//----------------------------------------------------------------
+//!  Testing program of the function "SolveSquare()"
+//!  Tests already set!
+//!  @copyright AlexZ
+//----------------------------------------------------------------
 
 void TestSolveSquare () {
     double a = NAN, b = NAN, c = NAN;
@@ -239,8 +244,10 @@ void TestSolveSquare () {
 }
 
 
-//! Print "Error!" and number of test in case of failed
-//! @param [in] numberOfTest - coefficient
+//----------------------------------------------------------------
+//!  Print "Error!" and number of test in case of failed
+//!  @param [in] numberOfTest - coefficient
+//----------------------------------------------------------------
 
 void PrintErrOfTest (int numberOfTest) {
     printf ("Error Test %d!\n", numberOfTest + 1);
