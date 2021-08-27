@@ -5,13 +5,13 @@
 
 
 
-const int INFINITY_ROOTS = -1;        //!< Const in case of Infinity number of roots
-const int NO_ROOTS = 0;               //!< Const in case of No roots
-const int ONE_ROOT = 1;               //!< Const in case of Single root
-const int TWO_ROOTS = 2;              //!< Const in case of two roots
+const int INFINITY_ROOTS = -1;        //!<  Const in case of Infinity number of roots
+const int NO_ROOTS = 0;               //!<  Const in case of No roots
+const int ONE_ROOT = 1;               //!<  Const in case of Single root
+const int TWO_ROOTS = 2;              //!<  Const in case of two roots
 const int NO = 0;
 const int YES = 1;
-const double NEAR_ZERO = 1e-100;      //!< Accuracy of our calculations (gets by MathAnalysis)
+const double NEAR_ZERO = 1e-100;      //!<  Accuracy of our calculations (gets by MathAnalysis)
 
 
 int SolveSquare (double a, double b, double c, double* root1, double* root2);
@@ -23,13 +23,15 @@ void TestSolveSquare ();
 void PrintErrOfTest (int numberOfTest);
 
 
+//! Structure to keep tests for function TestSolveSquare()
+
 struct paramTests {
-    double a;
-    double b;
-    double c;
-    int nRoots;
-    double root1;
-    double root2;
+    double a;           //!<  Coefficient of equation for x^2
+    double b;           //!<  Coefficient of equation for x
+    double c;           //!<  Coefficient of equation for free member
+    int nRoots;         //!<  Number of roots
+    double root1;       //!<  First solution of equation
+    double root2;       //!<  Second solution of equation
 };
 
 
@@ -252,3 +254,4 @@ void TestSolveSquare () {
 void PrintErrOfTest (int numberOfTest) {
     printf ("Error Test %d!\n", numberOfTest + 1);
 }
+
