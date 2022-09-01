@@ -9,7 +9,9 @@
 int main () {
 
 #ifdef DEBUG
-    TestSolveSquare ();
+    TestSolveSquare (); // TODO: See SolveSquareEquation for details on test extraction 
+    // TODO: Also, I think it would make sense for your program to return
+    //       EXIT_FAILURE when one of tests fails. Optional, fix other things first...
 
 #else
     double a = NAN, b = NAN, c = NAN;
